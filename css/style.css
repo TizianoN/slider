@@ -1,0 +1,81 @@
+/* # RESET */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* # LAYOUT */
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* # SLIDER */
+
+#slider {
+  max-width: 1100px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.control {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.slider-jumbo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 4px 2px gray;
+}
+
+.jumbo-description {
+  position: absolute;
+  width: 100%;
+  padding: 1rem;
+  bottom: 0;
+  text-align: right;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slider-thumbs {
+  display: flex;
+  gap: 2rem;
+}
+
+.slider-thumbs .thumb {
+  flex-grow: 1;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 2px 0px gray;
+  cursor: pointer;
+  filter: grayscale(1);
+}
+
+.slider-thumbs .thumb img {
+  height: 100%;
+}
+
+.slider-thumbs .thumb.active {
+  filter: grayscale(0);
+  box-shadow: 0px 0px 4px 2px #7a9fef;
+}
