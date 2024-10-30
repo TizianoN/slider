@@ -38,7 +38,13 @@ const prevButton = document.querySelector('#slider .control-left');
 const invertAutoplayButton = document.getElementById('invert-autoplay');
 
 // # FUNCTIONS
-
+/**
+ * Funzione che genera uno slider e restituisce un oggetto contenente la sua configurazione
+ * @param {Array} slidesData I dati da cui generare le slides
+ * @param {Node} jumboContainer Il contenitore in cui stampare il jumbo
+ * @param {Node} thumbsContainer Il contenitore in cui stampare le thumb
+ * @returns {Object} Oggetto rappresentante la configurazione dello slider
+ */
 const generateSlider = (slidesData, jumboContainer, thumbsContainer) => {
   // * genero l'HTML delle thumbs e lo stampo
   let thumbsHtml = ``;
@@ -92,6 +98,10 @@ const generateSlider = (slidesData, jumboContainer, thumbsContainer) => {
   return sliderConfig;
 };
 
+/**
+ * Funzione che va ad una nuova slide
+ * @param {Number} newIndex l'indice della nuova slide
+ */
 const goToSlide = (newIndex) => {
   // * recupero la vecchia e la nuova slide
   const oldSlide = sliderConfig.thumbs[activeSlide];
@@ -102,16 +112,25 @@ const goToSlide = (newIndex) => {
   oldSlide.classList.remove('active');
   newSlide.classList.add('active');
 
-  // * aggiorno il jumbo
+  // * recupero l'oggetto della slide attiva
   const activeSlideObject = slidesData[activeSlide];
 
+  // * aggiorno il jumbo
   sliderConfig.jumbo.img.src = getImagePath(activeSlideObject.img);
   sliderConfig.jumbo.title.innerText = activeSlideObject.title;
   sliderConfig.jumbo.description.innerText = activeSlideObject.description;
 };
 
+/**
+ * Funzione che genera il path di un'immagina dal suo nome
+ * @param {String} imageName il nome dell'immagine
+ * @returns {String} il path dell'immagine
+ */
 const getImagePath = (imageName) => `./img/${imageName}`;
 
+/**
+ * Funzione gestisce il click sul bottone prev
+ */
 const prevButtonClickHandler = () => {
   // * controllo di essere nel range dell'array delle slides
   let newIndex = activeSlide - 1 < 0 ? slidesData.length - 1 : activeSlide - 1;
@@ -120,6 +139,9 @@ const prevButtonClickHandler = () => {
   goToSlide(newIndex);
 };
 
+/**
+ * Funzione gestisce il click sul bottone next
+ */
 const nextButtonClickHandler = () => {
   // * controllo di essere nel range dell'array delle slides
   let newIndex = activeSlide + 1 >= slidesData.length ? 0 : activeSlide + 1;
